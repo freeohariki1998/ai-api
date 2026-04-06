@@ -1,10 +1,7 @@
 import { Router } from "express";
-import OpenAI from 'openai';
+import { client } from "../lib/openai";
 const router = Router();
 
-const client = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
 // ブラウザで確認したい用（GET）
 router.get("/", (req, res) => {
   res.send("GET OK: Hello from /api/chat");
