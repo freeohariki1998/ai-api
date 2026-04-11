@@ -10,8 +10,8 @@ const router = Router();
 router.post("/", async (req, res) => {
     const { trades } = req.body;
     if (!trades) return res.status(400).json({ error: "trades が必要です" });
-  
+
     // ここに分析ロジックを入れる
 });
-  
+
 export default router;

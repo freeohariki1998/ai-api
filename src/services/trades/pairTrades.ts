@@ -18,7 +18,7 @@ interface TradeLogRow {
 export async function getPairedTrades(): Promise<RawTrade[]> {
   const [rows] = await db.query(
     `
-      SELECT id, code, action, side, price, quantity, trade_datetime, strategy_name, is_sim
+      SELECT code, action, side, price, quantity, trade_datetime, strategy_name, is_sim
       FROM trade_logs
       ORDER BY code ASC, trade_datetime ASC
     `
@@ -46,6 +46,7 @@ export async function getPairedTrades(): Promise<RawTrade[]> {
 
       // ENTRY → SELL のペアが完成
       paired.push({
+        id: entry.id,
         code: log.code,
         side: log.side,
         entry_price: entry.price,
